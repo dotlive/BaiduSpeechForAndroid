@@ -1,12 +1,9 @@
 package com.hiscene.baiduspeech;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
-import com.baidu.speech.aidl.EventManager;
 import com.unity3d.player.UnityPlayerActivity;
-
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class MainActivity extends UnityPlayerActivity {
 
@@ -34,9 +31,9 @@ public class MainActivity extends UnityPlayerActivity {
     }
 
     //构造语音识别类
-    public Speech NewSpeech() {
-        Debug.Log("MainActivity/Speech()/构造语音识别类!");
-        return new Speech(m_Activity);
+    public Asr NewAsr() {
+        Debug.Log("MainActivity/NewAsr()/构造语音识别类!");
+        return new Asr(m_Activity);
     }
 
     //构造唤醒词类
