@@ -1,6 +1,8 @@
 package com.hiscene.baiduspeech;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import com.unity3d.player.UnityPlayerActivity;
@@ -25,9 +27,15 @@ public class MainActivity extends UnityPlayerActivity {
     }
 
     //检查用户权限
-    public void CheckPermissions(String[] permissons) {
-        Debug.Log("MainActivity/CheckPermissions()/permissons:"+permissons.toString());
-        PermissionsHelper.CheckPermissions(permissons);
+    public boolean CheckPermissions(String[] permissions) {
+        Debug.Log("MainActivity/CheckPermissions()/permissions:" + permissions.toString());
+        return PermissionsHelper.CheckPermissions(permissions);
+    }
+
+    //请求权限
+    public void RequestPermissions(int requestCode, String[] permissions) {
+        Debug.Log("MainActivity/RequestPermissions()/requestCode:"+requestCode+"--permissions:"+permissions.toString());
+        PermissionsHelper.RequestPermissions(requestCode, permissions);
     }
 
     //构造语音识别类
@@ -45,7 +53,7 @@ public class MainActivity extends UnityPlayerActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        Debug.Log("MainActivity/onRequestPermissionsResult()/permissions:"+permissions.toString());
+        Debug.Log("MainActivity/onRequestPermissionsResult()/permissions:" + permissions.toString());
         PermissionsHelper.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
