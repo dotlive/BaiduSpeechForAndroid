@@ -1,10 +1,7 @@
 package com.hiscene.baiduspeech;
-
 import android.content.pm.PackageManager;
 import android.os.Build;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import org.json.JSONObject;
 
@@ -18,19 +15,15 @@ public class PermissionsHelper {
         m_Activity = activity;
     }
 
-    //检查用户权限
-    public static boolean CheckPermissions(String[] permissions) {
+    //检查用户权限(0-表示有权限，1表示没有权限)
+    public static int CheckPermissions(String permission) {
 
-        boolean havePermission = true;
+        int havePermission = 0;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            for (String permisson : permissions) {
-                if (m_Activity.checkSelfPermission(permisson) != PackageManager.PERMISSION_GRANTED) {
-                    havePermission = false;
-                    break;
-                }
-            }
+            havePermission = m_Activity.checkSelfPermission(permission);
         }
+
         return havePermission;
     }
 

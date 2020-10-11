@@ -27,9 +27,9 @@ public class MainActivity extends UnityPlayerActivity {
     }
 
     //检查用户权限
-    public boolean CheckPermissions(String[] permissions) {
-        Debug.Log("MainActivity/CheckPermissions()/permissions:" + permissions.toString());
-        return PermissionsHelper.CheckPermissions(permissions);
+    public int CheckPermissions(String permission) {
+        Debug.Log("MainActivity/CheckPermissions()/permission:" + permission);
+        return PermissionsHelper.CheckPermissions(permission);
     }
 
     //请求权限
